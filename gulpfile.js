@@ -35,7 +35,7 @@ function sassError(error) {
 	jsSources('sass_error.js');
 };
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'js', 'css']);
 
 gulp.task('watch', function () {
 	gulp.watch(js_source_files, ['js']);
