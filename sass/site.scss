@@ -22,21 +22,22 @@ header {
 	width: 100%;
 	background: $header-color;
 	height:$header-height;
+
+	#header_text {
+		color: $header-text-color;
+		font-weight:300;
+		font-size:40px;
+		padding-top:75px;
+		text-align:center;
+		margin-left:auto;
+		margin-right:auto;
+		width:200px;
+		overflow:visible;
+	}
 }
 
-#header_text {
-	color: $header-text-color;
-	font-weight:300;
-	font-size:40px;
-	padding-top:75px;
-	text-align:center;
-	margin-left:auto;
-	margin-right:auto;
-	width:200px;
-	overflow:visible;
-}
-
-#header_reid, #header_savage {
+/* this class doesn't exist in the DOM - the header words inherit from it */
+.header_word {
 	display:inline-block;
 	vertical-align: center;
 	margin-left:auto;
@@ -56,6 +57,7 @@ header {
 }
 
 #header_reid {
+	@extend .header_word;
 	display: block; margin-top: 0px; float: left; opacity: 1;
 	.mask {
 		top:30px;
@@ -63,7 +65,9 @@ header {
 }
 
 #header_savage {
+	@extend .header_word;
 	display: block; margin-top: -5px; float: left; opacity: 1;
+
 	.mask {
 		top: -33px;
 	}
@@ -75,13 +79,16 @@ header {
 	text-align:center;
 	width:300px;
 	margin-top:90px;
+
 	ul {
 		white-space:nowrap;
+
 		li {
 			display:inline;
 			font-weight:200;
 			font-size:15px;
 			margin: 18px;
+
 			a {
 				color:$link-color;
 			}
