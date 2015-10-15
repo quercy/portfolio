@@ -24,7 +24,7 @@ function jsSources(sources) {
 	}
 	gulp.src(sourcearray)
 	.pipe(concat('app.js'))
-	.pipe(uglify())
+	//.pipe(uglify())
 	.pipe(gulp.dest('./'));
 };
 
