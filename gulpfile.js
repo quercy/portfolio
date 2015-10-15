@@ -9,7 +9,6 @@ gulp.task('default', ['watch']);
 gulp.task('js', function() {
 	gulp.src(['js/*.js'])
 	.pipe(concat('app.js'))
-	.pipe(ngAnnotate())
 	.pipe(uglify())
 	.pipe(gulp.dest('./'))
 });
