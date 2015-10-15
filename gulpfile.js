@@ -14,7 +14,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-	gulp.src('sass/*.scss')
+	gulp.src('sass/site.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('style.css'))
 		.pipe(cssMin())

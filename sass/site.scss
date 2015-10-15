@@ -1,7 +1,11 @@
+@import 'reset';
+
 $font-stack: 'Open Sans', sans-serif;
 $header-color: #fbf8ea;
 $link-color: #C5ADC5;
 $link-color-visited: $link-color;
+$header-height: 225;
+$header-text-color: #d7aaaa;
 
 body {
 	font-family: $font-stack;
@@ -10,8 +14,6 @@ body {
 	}
 }
 
-
-
 #stage {
 	width:100%;
 }
@@ -19,11 +21,11 @@ body {
 header {
 	width: 100%;
 	background: $header-color;
-	height:225px;
+	height:$header-height;
 }
 
 #header_text {
-	color: #d7aaaa;
+	color: $header-text-color;
 	font-weight:300;
 	font-size:40px;
 	padding-top:75px;
