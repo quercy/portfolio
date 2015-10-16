@@ -12,7 +12,9 @@
 			"engine": "swig",
 			"directory" : "layouts",
 			"default" : "index.html"
+    	},
+    	"metalsmith-sass" : {
+    		"outputDir" : ""
     	}
 	}
-
 }
