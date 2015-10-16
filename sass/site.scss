@@ -34,6 +34,7 @@ header {
 
 /* this class doesn't exist in the DOM - the header words inherit from it */
 .header_word {
+	opacity:0;
 	display:inline-block;
 	vertical-align: center;
 	margin-left:auto;
