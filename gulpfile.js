@@ -4,7 +4,7 @@ var cssMin = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var js_source_files = 'js/*.js';
-
+var sass_source_files = 'sass/*.scss';
 /* 
 	For the actual work of this file, see below. Gulp is wonky if I don't define the functions
 	up here. 
@@ -25,7 +25,7 @@ function jsSources(sources) {
 	gulp.src(sourcearray)
 	.pipe(concat('app.js'))
 	//.pipe(uglify())
-	.pipe(gulp.dest('./'));
+	.pipe(gulp.dest('./build/'));
 };
 
 // When there is a compilation error, log it to the console, then recompile the JS sources
@@ -39,7 +39,7 @@ gulp.task('default', ['watch', 'js', 'css']);
 
 gulp.task('watch', function () {
 	gulp.watch(js_source_files, ['js']);
-	gulp.watch('sass/*.scss', ['css']);
+	gulp.watch(sass_source_files, ['css']);
 });
 
 gulp.task('js', jsSources());
@@ -47,11 +47,11 @@ gulp.task('js', jsSources());
 gulp.task('css', function() {
 	jsSources(); // For some reason, I have to do this instead of just watch the SASS files
 	// and trigger the task - it breaks the concatenation
-	gulp.src('sass/site.scss')
+	gulp.src('./sass/site.scss')
 		.pipe(sass().on('error', sassError))
 		.pipe(concat('style.css'))
 		.pipe(cssMin())
-		.pipe(gulp.dest('./'));
+		.pipe(gulp.dest('./build'));
 });
 
 
