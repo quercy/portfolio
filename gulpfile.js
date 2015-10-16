@@ -32,7 +32,7 @@ function jsSources(sources) {
 // with the sass_error file attached
 function sassError(error) {
 	sass.logError.call(this, error); 
-	jsSources('sass_error.js');
+	jsSources('sass/sass_error.js');
 };
 
 gulp.task('default', ['watch', 'js', 'css']);
