@@ -1,18 +1,14 @@
 @import 'reset';
 
 $font-stack: 'Open Sans', sans-serif;
+$font-size: 16px;
 $header-color: #fbf8ea;
 $link-color: #C5ADC5;
 $link-color-visited: $link-color;
 $header-height: 225;
 $header-text-color: #d7aaaa;
 
-body {
-	font-family: $font-stack;
-	a {
-		text-decoration: none;
-	}
-}
+@import 'page';
 
 #stage {
 	width:100%;
@@ -28,7 +24,7 @@ header {
 		font-weight:300;
 		font-size:40px;
 		padding-top:75px;
-		text-align:center;
+		// text-align:center;
 		margin-left:auto;
 		margin-right:auto;
 		width:200px;
@@ -76,7 +72,6 @@ header {
 #header_links {
 	margin-left: auto;
 	margin-right:auto;
-	text-align:center;
 	width:300px;
 	margin-top:90px;
 
@@ -91,9 +86,9 @@ header {
 
 			a {
 				color:$link-color;
-			}
-			a:visited {
+				&:visited {
 				color:$link-color-visited;
+				}
 			}
 		}
 	}
