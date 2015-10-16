@@ -7,27 +7,32 @@ var watch = require('metalsmith-watch');
 var markdown = require('metalsmith-markdown');
 var permalinks = require('metalsmith-permalinks');
 var ignore = require('metalsmith-ignore');
-
+var concat = require('metalsmith-concat');
 
 var ms = Metalsmith(__dirname)
-    .source('src/')
+    .source('src')
     .destination('./build')
+        .use(sass({
+        "outputStyle": "expanded",
+        "outputDir" : "."
+    }))
     .metadata({
-        "site_title" : "quercy.co",
-        "description": "My statically generated portfolio"
+        "site_title" : "site title",
+        "description": ""
     })
     .use(markdown())
-    .use(sass({
-        "outputStyle": "expanded"
-    })) 
+    .use(layouts({
+        "engine":"handlebars",
+        "directory" : "src/layouts/",
+        "default" : "template.html",
+        "pattern" : "*.html"
+    }))
     .use(permalinks({
         "pattern":":title"
     }))
-    .use(layouts({
-        "engine":"swig",
-        "directory" : "src/layouts",
-        "default" : "template.html",
-        "pattern" : "*.md"
+    .use(concat({
+        "files": "js/*.js",
+        "output" : "app.js"
     }))
     .ignore(['layouts']);
 
