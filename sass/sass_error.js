@@ -6,13 +6,13 @@ $(document).ready(function() {
 		'overflow' : 'hidden',
 		'position': 'absolute',
 	    'left': '20px',
-	    'top': '-5px',
+	    'top': '10px',
 	    'font-family': 'serif'
 	});
 	$msgBox = $("<div id='error_box'>" + error_message + "</div>").css({
 		'position':'absolute',
 		'width' : '250px',
-		'height' : '50px',
+		'height' : '80px',
 		'top' : '20px',
 		'left' : '20px',
 		'border-radius' : '5px',
