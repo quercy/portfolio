@@ -5,6 +5,7 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,300bold' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
+<title>{{ title }} -- quercy.co</title>
 </head>
 <body>
 <div id="stage">
@@ -14,9 +15,9 @@
 		</div>
 		<div id="header_links">
 			<ul>
-				<li class="menu_selected"><a href="#">bio</a></li>
-				<li><a href="#">projects</a></li>
-				<li><a href="#">contact</a></li>
+				<li {% if title.lower() == "bio" %} class="menu_selected" {% endif %}><a href="#">bio</a></li>
+				<li {% if title.lower() == "projects" %} class="menu_selected" {% endif %}><a href="#">projects</a></li>
+				<li {% if title.lower() == "contact" %} class="menu_selected" {% endif %}><a href="#">contact</a></li>
 			</ul>
 		</div>
 	</header>
