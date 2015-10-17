@@ -1,5 +1,4 @@
 var argv = require('minimist')(process.argv.slice(2));
-
 var Metalsmith = require('metalsmith');
 var sass = require('metalsmith-sass');
 var layouts = require('metalsmith-layouts');
@@ -14,13 +13,15 @@ var ms = Metalsmith(__dirname)
     .destination('./build')
         .use(sass({
         "outputStyle": "expanded",
-        "outputDir" : "."
+        "outputDir" : ""
     }))
     .metadata({
         "site_title" : "site title",
         "description": ""
     })
-    .use(markdown())
+    .use(markdown({
+        html: true
+    }))
     .use(layouts({
         "engine":"handlebars",
         "directory" : "src/layouts/",
@@ -38,7 +39,9 @@ var ms = Metalsmith(__dirname)
 
   if (argv.watch) {
     ms.use(watch({
-        pattern: ['**/*'],
+        paths:{
+            "${source}/**/*": "**/*"
+        },
         livereload: true
     }));
 }

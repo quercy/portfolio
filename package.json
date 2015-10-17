@@ -2,10 +2,8 @@
   "name": "portfolio-metalsmith",
   "version": "0.0.1",
   "scripts": {
-    "start": "node --harmony build.js --watch",
-    "build": "node --harmony build.js",
-    "build-staging": "node build.js --staging",
-    "build-production": "node build.js --production"
+    "build": "node build.js",
+    "start": "node build.js --watch"
   },
   "main": "build.js",
   "dependencies": {
@@ -19,7 +17,5 @@
     "metalsmith-sass": "^1.3.0",
     "metalsmith-watch": "^1.0.1",
     "minimist": "^1.2.0",
-    "node-sass": "^3.3.3",
-    "swig": "^1.4.2"
   }
 }
