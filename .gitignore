@@ -5,3 +5,6 @@ style.css
 old
 *.log
 build/
+deploy.sh
+deploy.js
+*.sh

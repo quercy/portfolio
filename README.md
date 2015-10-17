@@ -7,6 +7,7 @@ The system used to build my static portfolio.
 
 ## Building
 The static builder uses make.
+
     make
     
 Will install all required node modules and then do an initial build to ./build.

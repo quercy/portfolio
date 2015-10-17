@@ -3,10 +3,12 @@ var Metalsmith = require('metalsmith');
 var sass = require('metalsmith-sass');
 var layouts = require('metalsmith-layouts');
 var watch = require('metalsmith-watch');
-var markdown = require('metalsmith-markdown');
 var permalinks = require('metalsmith-permalinks');
 var ignore = require('metalsmith-ignore');
 var concat = require('metalsmith-concat');
+var uglify = require('metalsmith-uglify');
+var site_title = "quercy.co";
+var description = "";
 
 var ms = Metalsmith(__dirname)
     .source('src')
@@ -16,7 +18,7 @@ var ms = Metalsmith(__dirname)
         "outputDir" : ""
     }))
     .metadata({
-        "site_title" : "site title",
+        "site_title" : site_title,
         "description": ""
     })
     .use(layouts({
@@ -32,6 +34,7 @@ var ms = Metalsmith(__dirname)
         "files": "js/*.js",
         "output" : "app.js"
     }))
+    .use(uglify())
     .ignore(['layouts']);
 
   if (argv.watch) {
@@ -45,7 +48,9 @@ var ms = Metalsmith(__dirname)
 
 if(argv.dev) {
     ms.metadata({
-        "dev" : true
+        "dev" : true,
+        "site_title" : site_title,
+        "description" : description
     });
 }
 

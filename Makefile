@@ -12,5 +12,8 @@ watch: ./node_modules
 dev: ./node_modules
 	node build.js --watch --dev
 
+deploy:
+	./deploy.sh
+
 clean:
 	rm -r ./build

@@ -12,6 +12,7 @@ header {
 		font-size:40px;
 		padding-top:75px;
 		margin-left:auto;
+		padding-left:30px; // makes it look more centered, oddly enough
 		margin-right:auto;
 		width:200px;
 		overflow:visible;
@@ -30,6 +31,9 @@ header {
         -ms-transform: rotate(-10deg) skew(-10deg, 0);
          -o-transform: rotate(-10deg) skew(-10deg, 0);
             transform: rotate(-10deg) skew(-10deg, 0);
+    a {
+    	color:$header-text-color;
+    }
 }
 
 .mask {
