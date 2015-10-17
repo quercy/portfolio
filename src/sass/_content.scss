@@ -3,6 +3,7 @@ body {
 	font-family: $content-font-stack;
 	font-size:$font-size;
 	color: $body-font-color;
+
 	a {
 		text-decoration: none;
 		color:#F78F35;
@@ -10,11 +11,13 @@ body {
 			color:orange;
 		}
 	}
+
 	#content {
-		margin-top:20px;
+		padding-top:30px;
 		width: 80%;
 		margin: 0 auto;
 	}
+
 	$h-size: $font-size + 20;
 	@for $i from 1 through 6 {
   		#{h}#{$i} {
@@ -25,11 +28,13 @@ body {
   			$h-size: $h-size - 3;
   		}
 	}
+
 	p {
 		margin:20px 20px 20px 30px;
 		line-height: $font-size + 7;
 		padding: 0px 30px 0px 30px;
 	}
+
 	ul {
 		margin-left:$list-margin;
 		list-style: disc;
@@ -38,10 +43,12 @@ body {
 			list-style-type: disc;
 		}
 	}
+
 	ol {
 		margin-left:$list-margin;
 		list-style:lower-roman;
 	}
+
 	input[type="text"], textarea {
 	  	padding: 1px;
 	  	border: none;
@@ -52,12 +59,15 @@ body {
   			border-bottom: solid 2px #969696;
   		}
 	}
+
 	strong {
 		font-weight:bold;
 	}
+
 	i {
 		font-style:italic;
 	}
+
 	code {
 		background-color:#F7F7F7;
 		color:#0F7FAB;
@@ -67,14 +77,15 @@ body {
 		margin:15px;
 		font-family:monospace;
 	}
+
 	blockquote {
 		background-color:rgb(62, 62, 62);
 		color:white;
 		padding:20px;
 		margin:20px 0px 20px 0px;
--webkit-box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
--moz-box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
-box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
+		-webkit-box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
+		   -moz-box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
+		        box-shadow: inset 0px 0px 22px 0px rgba(0,0,0,0.45);
 		p {
 			padding: 0;
 			margin: 0;

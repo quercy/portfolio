@@ -19,7 +19,6 @@ var ms = Metalsmith(__dirname)
         "site_title" : "site title",
         "description": ""
     })
-    // .use(markdown())
     .use(layouts({
         "engine":"handlebars",
         "directory" : "src/layouts/",
@@ -44,6 +43,16 @@ var ms = Metalsmith(__dirname)
     }));
 }
 
+if(argv.dev) {
+    ms.metadata({
+        "dev" : true
+    });
+}
+
 ms.build(function(err) {
-    if (err) throw err;
+    if (err) {
+        console.log("HEY!");
+        throw err;
+
+    } 
   });

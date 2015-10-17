@@ -9,5 +9,8 @@ build: ./node_modules ./src/* ./src/**/*
 watch: ./node_modules
 	node build.js --watch
 
+dev: ./node_modules
+	node build.js --watch --dev
+
 clean:
 	rm -r ./build
