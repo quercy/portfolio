@@ -19,18 +19,16 @@ var ms = Metalsmith(__dirname)
         "site_title" : "site title",
         "description": ""
     })
-    .use(markdown({
-        html: true
-    }))
+    // .use(markdown())
     .use(layouts({
         "engine":"handlebars",
         "directory" : "src/layouts/",
         "default" : "template.html",
         "pattern" : "*.html"
     }))
-    .use(permalinks({
-        "pattern":":title"
-    }))
+    // .use(permalinks({
+    //     "pattern":":title"
+    // }))
     .use(concat({
         "files": "js/*.js",
         "output" : "app.js"

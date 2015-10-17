@@ -24,28 +24,28 @@ $(document).ready(function() {
 				    'width': '0%'
 				});;
 				header_reid.css({
-					'margin-top' : "-40px" // to come in from the top
+					'margin-top' : "-30px" // to come in from the top
 				});
 				header_savage.css({
-					'margin-top' : "40px" // to come in from the bottom
+					'margin-top' : "30px" // to come in from the bottom
 				});
 			})();
 
 			(function fade() {
-				header_reid.velocity({'opacity':1, 'margin-top' : "0px"}, {'queue' : false, delay:500, duration:1000, 'easing' : 'easeOutQuint'});
-				header_savage.velocity({'opacity':1, 'margin-top' : header_savage.data('margin-top')}, {'queue' : false, delay:500, duration:1000, 'easing' : 'easeOutQuint'});
+				header_reid.velocity({'opacity':1, 'margin-top' : "0px"}, {'queue' : false, delay:500, duration:800, 'easing' : 'easeOutCubic'});
+				header_savage.velocity({'opacity':1, 'margin-top' : header_savage.data('margin-top')}, {'queue' : false, delay:500, duration:800, 'easing' : 'easeOutCubic'});
 			})();
 	
 			(function swipey_maskey() {
-				var reid_mask_delay = 900;
-				var reid_mask_duration = 700;
+				var reid_mask_delay = 400;
+				var reid_mask_duration = 400;
 				var savage_mask_delay = reid_mask_delay + reid_mask_duration + 50;
-				var savage_mask_duration = reid_mask_duration - 100;
+				var savage_mask_duration = reid_mask_duration - 50;
 				var values = {
 					'opacity' : 1, 'width' : '100%'
 				}
-				reid_mask.velocity(values, {'queue' : false, delay:reid_mask_delay, duration:reid_mask_duration, easing:'easeInOutExpo'});
-				savage_mask.velocity(values, {'queue' : false, delay:savage_mask_delay, duration:savage_mask_duration, easing:'easeInOutExpo'});
+				reid_mask.velocity(values, {'queue' : false, delay:reid_mask_delay, duration:reid_mask_duration, easing:'easeInCubic'});
+				savage_mask.velocity(values, {'queue' : false, delay:savage_mask_delay, duration:savage_mask_duration, easing:'easeOutCubic'});
 			})();
 		}
 	})(false);
