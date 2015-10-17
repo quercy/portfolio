@@ -1,9 +1,9 @@
 all: build
 
-node_modules:
+./node_modules:
 	npm install
 
-build: ./node_modules
+build: ./node_modules ./src/* ./src/**/*
 	node build.js
 
 watch: ./node_modules
