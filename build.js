@@ -58,6 +58,5 @@ ms.build(function(err) {
     if (err) {
         console.log("HEY!");
         throw err;
-
     } 
   });

@@ -19,11 +19,11 @@ header {
 	}
 }
 
-/* this class doesn't exist in the DOM - the header words inherit from it */
-.header_word {
+%header_word {
 	opacity:0;
-	display:inline-block;
+	display:block;
 	vertical-align: center;
+	float:left;
 	margin-left:auto;
 	margin-right:auto;
 	-webkit-transform: rotate(-10deg) skew(-10deg, 0);
@@ -44,17 +44,16 @@ header {
 }
 
 #header_reid {
-	@extend .header_word;
-	display: block; margin-top: 0px; float: left;
+	@extend %header_word;
+	margin-top: 0px;
 	.mask {
 		top:30px;
 	}
 }
 
 #header_savage {
-	@extend .header_word;
-	display: block; margin-top: -7px; float: left;
-
+	@extend %header_word;
+	margin-top: -7px;
 	.mask {
 		top: -30px;
 	}
