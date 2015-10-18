@@ -12,7 +12,7 @@ watch: ./node_modules
 dev: ./node_modules
 	node build.js --watch --dev
 
-deploy:
+deploy: build
 	./deploy.sh
 
 clean:

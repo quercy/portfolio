@@ -7,16 +7,21 @@ var permalinks = require('metalsmith-permalinks');
 var ignore = require('metalsmith-ignore');
 var concat = require('metalsmith-concat');
 var uglify = require('metalsmith-uglify');
+var branch = require('metalsmith-branch');
 var site_title = "quercy.co";
 var description = "";
 
 var ms = Metalsmith(__dirname)
     .source('src')
+    .use(moveFiles())
     .destination('./build')
-        .use(sass({
-        "outputStyle": "expanded",
-        "outputDir" : ""
-    }))
+        .use(branch('sass/*')
+            .use(
+                sass({
+                "outputStyle": "expanded",
+                "outputDir" : ""
+            })
+        ))
     .metadata({
         "site_title" : site_title,
         "description": ""
@@ -35,8 +40,7 @@ var ms = Metalsmith(__dirname)
         "output" : "app.js"
     }))
     .use(uglify())
-    .ignore(['layouts']);
-
+    .ignore(['layouts', '.DS_Store']);
   if (argv.watch) {
     ms.use(watch({
         paths:{

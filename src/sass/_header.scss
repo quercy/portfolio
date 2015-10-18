@@ -3,11 +3,7 @@ header {
 	width: 100%;
 	background: $header-color;
 	height:$header-height;
-// 	 -webkit-box-shadow: inset 0px -34px 115px -56px rgba(0,0,0,0.45);
-// 		-moz-box-shadow: inset 0px -34px 115px -56px rgba(0,0,0,0.45);
-// 			 box-shadow: inset 0px -34px 115px -56px rgba(0,0,0,0.45);
 	#header_text {
-		color: $header-text-color;
 		font-weight:300;
 		font-size:40px;
 		padding-top:75px;

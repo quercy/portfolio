@@ -1,0 +1,11 @@
+%header_word {
+	opacity:1;
+}
+
+#header_reid {
+	@extend %header_word;
+}
+
+#header_savage {
+	@extend %header_word;
+}
