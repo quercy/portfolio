@@ -8,7 +8,7 @@ header {
 		font-size:40px;
 		padding-top:75px;
 		margin-left:auto;
-		padding-left:30px; // makes it look more centered, oddly enough
+		padding-left:65px; // makes it look more centered, oddly enough
 		margin-right:auto;
 		width:200px;
 		overflow:visible;
@@ -18,7 +18,6 @@ header {
 %header_word {
 	opacity:0;
 	display:block;
-	vertical-align: center;
 	float:left;
 	margin-left:auto;
 	margin-right:auto;

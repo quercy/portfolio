@@ -8,12 +8,12 @@ var ignore = require('metalsmith-ignore');
 var concat = require('metalsmith-concat');
 var uglify = require('metalsmith-uglify');
 var branch = require('metalsmith-branch');
+var prefixer = require('metalsmith-autoprefixer');
 var site_title = "quercy.co";
 var description = "";
 
 var ms = Metalsmith(__dirname)
     .source('src')
-    .use(moveFiles())
     .destination('./build')
         .use(branch('sass/*')
             .use(
@@ -40,6 +40,7 @@ var ms = Metalsmith(__dirname)
         "output" : "app.js"
     }))
     .use(uglify())
+    .use(prefixer())
     .ignore(['layouts', '.DS_Store']);
   if (argv.watch) {
     ms.use(watch({

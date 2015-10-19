@@ -3,29 +3,38 @@ body {
 	font-family: $content-font-stack;
 	font-size:$font-size;
 	color: $body-font-color;
-
+	.project {
+		// background-color: lighten($header-color, 5%);
+		margin:25px;
+	}
 	a {
 		text-decoration: none;
-		color:#F78F35;
-		&:hover {
-			color:orange;
-		}
 	}
 
 	#content {
 		padding-top:30px;
 		width: 80%;
 		margin: 0 auto;
+		a {
+			text-decoration: none;
+			color:#DA3C3C;
+			&:hover {
+				// color:orange;
+				border-bottom: 1px dotted;
+			}
+		}
 	}
-
-	$h-size: $font-size + 100;
+	$margin: 10px;
+	$h-size: 2em;
 	@for $i from 1 through 6 {
   		#{h}#{$i} {
   			font-weight: bold;
   			font-size: $h-size;
-  			margin:20px;
+  			margin:10px;
+  			margin-left:$margin;
+  			$margin: $margin + 10;
   			color:$body-strong-font-color;
-  			$h-size: $h-size - 3;
+  			$h-size: $h-size - .3;
   		}
 	}
 
@@ -36,11 +45,12 @@ body {
 	}
 
 	ul {
-		margin-left:$list-margin;
+		margin-left:$list-margin + 20px;
 		list-style: disc;
 		list-style-type: disc;
 		li {
 			list-style-type: disc;
+			margin: 5px;
 		}
 	}
 

@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var savage_mask = header_savage.find('.mask');
 	var swipey_maskey_toggle = false;
 
-	// swipey maskey will take the divs covering (masking) your text and animate them
+	// swipey maskey takes the divs covering (masking) the header text and animates them
 	var swipey_maskey = function swipey_maskey(delay, duration, in_out) {
 		var in_out = (in_out || (swipey_maskey_toggle == true ? 'out' : 'in'));
 		swipey_maskey_toggle = !swipey_maskey_toggle;
@@ -33,9 +33,7 @@ $(document).ready(function() {
 			reid_mask.velocity({'width' : '0%'}, {queue:false,delay:reid_mask_delay, duration:reid_mask_duration, easing:'easeOutCubic'});
 		}
 	};
-
-	setTimeout(function() {
-		header_text.hover(function() {
+		header.hover(function() {
 			if(!reid_mask.hasClass('velocity-animating') && !savage_mask.hasClass('velocity-animating')) {
 				swipey_maskey(0, 50, 'out');
 			}
@@ -44,7 +42,7 @@ $(document).ready(function() {
 				swipey_maskey(0, 50, 'in');
 			}
 		});
-	}, 100);
+
 	
 	(function animate(alreadyPlayed) {
 		if(!alreadyPlayed) {

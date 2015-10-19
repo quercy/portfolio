@@ -1,10 +1,15 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<link href="site.css" rel="stylesheet" type="text/css" />
+		<link href="site.css" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{#dev}} !!development!! {{/dev}} {{ title }} -- {{ site_title }} </title>
-		<meta name="description" content="{{ description }}" />
+		<meta name="description" content="{{ description }}">
+		<meta charset="utf-8" /> 
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=100" />
+		<![endif]-->
 	</head>
 	<body>
 		<header>
@@ -14,7 +19,7 @@
 			</div>
 			<div id="header_links">
 				<ul>
-					<li><a {{#bio}} class="menu_selected" {{/bio}} href="bio.html">bio</a></li>
+					<li><a {{#blog}} class="menu_selected" {{/blog}} href="blog.html">blog</a></li>
 					<li><a {{#projects}} class="menu_selected" {{/projects}} href="projects.html">projects</a></li>
 					<li><a {{#contact}} class="menu_selected" {{/contact}} href="contact.html">contact</a></li>
 				</ul>

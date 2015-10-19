@@ -10,6 +10,7 @@
   "dependencies": {
     "handlebars": "^4.0.3",
     "metalsmith": "^2.1.0",
+    "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-branch": "0.0.4",
     "metalsmith-concat": "^3.0.3",
     "metalsmith-ignore": "^0.1.2",
