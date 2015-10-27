@@ -8,17 +8,17 @@ projects: true
 	<h2><a href="https://mob.quercy.co" target="_blank">SomethingGUD Mobile</a></h2>
 	<p>Warning: SSL certificate expired. If you register, use a throwaway password. This was a rapid prototype of a browser-based shopping cart mobile app, done over the course of 3 days.</p>
 	<h4>What I learned</h4>
-	<p>Preparation and design is important - it's what enabled me to go from idea to implementation in 3 days. Developing 1-page app without a frontend Javascript framework is painful. Security is hard. PDO makes it easier.</p>
+	<p>Preparation and design is important - it's what enabled me to go from idea to implementation in 3 days. Developing 1-page app without a frontend JavaScript framework is painful. Security is hard. PDO makes it easier.</p>
 	<h4>Technologies used</h4>
 	<ul>
 		<li>PHP
 			<ul>
 				<li>PDO extension</li>
-				<li><a href="http://www.slimframework.com/" target="_blank">Slim</a> (framework to build the REST API)</li>
+				<li><a href="http://www.slimframework.com/" target="_blank">Slim</a> - framework to build the REST API</li>
 			</ul>
 		</li>
 		<li>MySQL</li>
-		<li>Javascript
+		<li>JavaScript
 			<ul>
 				<li>jQuery + jQuery Mobile</li>
 			</ul>
@@ -31,10 +31,10 @@ projects: true
 	<h2><a href="http://www.quercy.co/" target="_blank">This site</a></h2>
 	<p>I started with a simple sketch of the layout in Photoshop, and then mocked it up in HTML/CSS. I then made a build system using Gulp to compile, minify, and concatenate the JS and SASS, using Node to run the server, but that quickly got unweildy for such a small site. I stumbled on <a href="http://metalsmith.io" target="_blank">Metalsmith</a>, a static site generator based on plugins and file-based pages and templates - which is perfect in terms of speed and ease. I added watchers to automatically compile the site and autoreload any open pages for rapid develoment, and a Makefile to quickly deploy.</p>
 	<h4>What I learned</h4>
-	<p>Build tools like Gulp can be a time hole, even if they <strong>are</strong> cool. Don't rely on documentation. There is a place for static websites - they are incredibly fast. Are you going to blame IE for breaking your design? Try W3C's HTML & CSS validators.</p>
+	<p>Build tools like Gulp can be a time hole, even if they <strong>are</strong> cool. Don't rely on documentation. There is a place for static websites - they are incredibly fast. Always validate your CSS and HTML.</p>
 	<h4>Technologies used</h4>
 	<ul>
-		<li>Javascript
+		<li>JavaScript
 			<ul>
 				<li>Node/npm - package management, building, scripting, deploying</li>
 				<li>jQuery with Velocity - animation, DOM manipulation</li>
@@ -55,7 +55,7 @@ projects: true
 	<h4>Technologies used</h4>
 	<ul>
 		<li>HTML/CSS</li>
-		<li>Javascript + jQuery</li>
+		<li>JavaScript + jQuery</li>
 		<li>Python (search function for PDFs)</li>
 		<li>bash / AWS EC2 (to index all of the PDFs, which required a ton of computing power)</li>
 	</ul>
