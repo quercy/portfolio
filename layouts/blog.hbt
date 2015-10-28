@@ -1,0 +1,16 @@
+
+{{> header}}
+	<div id="content" class="blog">
+	{{{ contents }}}
+
+	{{#each collections.posts}}
+		<div class="item">
+            <h4><a href="#">{{this.title}}</a></h4>
+            {{{date this.date}}}
+            <article>{{this.tagline}}</article>
+        </div>
+	{{/each}}
+	</div>
+
+{{> footer}}
+

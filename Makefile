@@ -3,7 +3,7 @@ all: build
 ./node_modules:
 	npm install
 
-build: ./node_modules ./src/* ./src/**/*
+build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/* ./layouts/*/*
 	node build.js
 
 watch: ./node_modules

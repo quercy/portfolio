@@ -9,40 +9,56 @@ var concat = require('metalsmith-concat');
 var uglify = require('metalsmith-uglify');
 var branch = require('metalsmith-branch');
 var prefixer = require('metalsmith-autoprefixer');
+var handlebars = require('handlebars');
+var collections = require('metalsmith-collections');
+var moment = require('moment');
 var site_title = "quercy.co";
+var fs = require("fs");
 var description = "";
+
+handlebars.registerHelper('date', function(date) {
+  date = handlebars.escapeExpression(date);
+  date = moment(date, "ddd MMM D YYYY HH:mm:ss").add(6, 'hours').format("M - D - YYYY");
+  return new handlebars.SafeString(
+    "<div class='date'>" + date + "</div>"
+  );
+});
 
 var ms = Metalsmith(__dirname)
     .source('src')
-    .destination('./build')
-        .use(branch('sass/*')
-            .use(
-                sass({
-                "outputStyle": "expanded",
-                "outputDir" : ""
-            })
-        ))
     .metadata({
         "site_title" : site_title,
         "description": ""
     })
-    .use(layouts({
-        "engine":"handlebars",
-        "directory" : "src/layouts/",
-        "default" : "template.html",
-        "pattern" : "*.html"
+    .use(sass({
+        "outputStyle": "expanded",
+        "outputDir" : "css/"
     }))
-    // .use(permalinks({
-    //     "pattern":":title"
-    // }))
+    .use(collections({
+        posts : {
+            "pattern": "posts/*.html",
+            "sortBy": 'date',
+            "reverse": true
+        }
+    }))
+    .use(layouts({
+        "engine" : "handlebars",
+        "default" : "template.hbt",
+        "partials" : "layouts/partials",
+        "pattern" : "**/*.html"
+    }))
     .use(concat({
         "files": "js/*.js",
-        "output" : "app.js"
+        "output" : "js/app.js"
     }))
     .use(uglify())
-    .use(prefixer())
-    .ignore(['layouts', '.DS_Store']);
-  if (argv.watch) {
+    .use(permalinks({
+        pattern: "./:collection/:title"
+    }))
+    .ignore(['layouts', '.DS_Store'])
+    .destination('./build');
+
+if (argv.watch) {
     ms.use(watch({
         paths:{
             "${source}/**/*": "**/*"
@@ -61,7 +77,6 @@ if(argv.dev) {
 
 ms.build(function(err) {
     if (err) {
-        console.log("HEY!");
         throw err;
     } 
   });
