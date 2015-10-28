@@ -9,6 +9,7 @@
   "main": "build.js",
   "dependencies": {
     "handlebars": "^4.0.3",
+    "js-cookie": "^2.0.4",
     "metalsmith": "^2.1.0",
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-branch": "0.0.4",

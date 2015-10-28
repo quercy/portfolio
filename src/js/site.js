@@ -10,7 +10,8 @@ $(document).ready(function() {
 
 	// swipey maskey takes the divs covering (masking) the header text and animates them
 	var swipey_maskey = function swipey_maskey(delay, duration, in_out) {
-		var in_out = (in_out || (swipey_maskey_toggle == true ? 'out' : 'in'));
+		// in_out variable passed to the function; if not available, depends on the status of the masks
+		var in_out = (in_out || (swipey_maskey_toggle == true ? 'out' : 'in')); 
 		swipey_maskey_toggle = !swipey_maskey_toggle;
 		var reid_mask_delay;
 		var reid_mask_duration;
@@ -33,6 +34,8 @@ $(document).ready(function() {
 			reid_mask.velocity({'width' : '0%'}, {queue:false,delay:reid_mask_delay, duration:reid_mask_duration, easing:'easeOutCubic'});
 		}
 	};
+
+	var headerHover = function() {
 		header.hover(function() {
 			if(!reid_mask.hasClass('velocity-animating') && !savage_mask.hasClass('velocity-animating')) {
 				swipey_maskey(0, 50, 'out');
@@ -42,6 +45,7 @@ $(document).ready(function() {
 				swipey_maskey(0, 50, 'in');
 			}
 		});
+	};
 
 	
 	(function animate(alreadyPlayed) {
@@ -75,6 +79,15 @@ $(document).ready(function() {
 			})();
 	
 			swipey_maskey(500);
+			setTimeout(function() {
+				headerHover();
+			}, 1000);
+			// expires in 10 minutes: animation run
+			Cookies.set("animationRun", "true", {expires: new Date(Date.now() + 600000)});
+		} else {
+			header_reid.velocity({'opacity':1}, {'duration':0});
+			header_savage.velocity({'opacity':1}, {'duration':0});
+			headerHover();
 		}
-	})(false);
+	})(Cookies.get("animationRun") === "true");
 });
