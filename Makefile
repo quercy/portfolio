@@ -3,8 +3,10 @@ all: build
 ./node_modules:
 	npm install
 
-build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/* ./layouts/*/*
+build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/* ./layouts/*/* Makefile
 	node build.js
+	mkdir build/js && browserify ./src/js/*.js > ./build/js/bundle.js
+
 
 watch: ./node_modules
 	node build.js --watch

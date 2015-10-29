@@ -1,3 +1,9 @@
+var $ = require('jquery');
+$.fn.extend({
+	velocity : require('velocity-animate')
+});
+var Cookies = require('js-cookie');
+
 $(document).ready(function() {
 	
 	var header = $('header');
@@ -13,10 +19,10 @@ $(document).ready(function() {
 		// in_out variable passed to the function; if not available, depends on the status of the masks
 		var in_out = (in_out || (swipey_maskey_toggle == true ? 'out' : 'in')); 
 		swipey_maskey_toggle = !swipey_maskey_toggle;
-		var reid_mask_delay;
-		var reid_mask_duration;
-		var savage_mask_duration;
-		var savage_mask_delay;
+		var reid_mask_delay = 0;
+		var reid_mask_duration = 0;
+		var savage_mask_duration = 0;
+		var savage_mask_delay = 0;
 
 		if(in_out === 'in') {
 			reid_mask_delay = (delay || 0);
@@ -44,6 +50,13 @@ $(document).ready(function() {
 			if(!reid_mask.hasClass('velocity-animating') && !savage_mask.hasClass('velocity-animating')) {
 				swipey_maskey(0, 50, 'in');
 			}
+		});
+
+		$('#content').hover(function() {
+			if(reid_mask.css('opacity') === 0) {
+				swipey_maskey(0, 50, 'in');
+			}
+			
 		});
 	};
 

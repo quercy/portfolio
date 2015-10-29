@@ -8,13 +8,16 @@
   },
   "main": "build.js",
   "dependencies": {
+    "browserify": "^12.0.1",
     "handlebars": "^4.0.3",
+    "jquery": "^2.1.4",
     "js-cookie": "^2.0.4",
     "metalsmith": "^2.1.0",
     "metalsmith-autoprefixer": "^1.1.0",
     "metalsmith-branch": "0.0.4",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-concat": "^3.0.3",
+    "metalsmith-debug": "0.0.2",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.1",
     "metalsmith-permalinks": "^0.4.0",
@@ -22,6 +25,7 @@
     "metalsmith-uglify": "^1.2.1",
     "metalsmith-watch": "^1.0.1",
     "minimist": "^1.2.0",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "velocity-animate": "^1.2.3"
   }
 }

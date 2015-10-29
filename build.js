@@ -5,16 +5,22 @@ var layouts = require('metalsmith-layouts');
 var watch = require('metalsmith-watch');
 var permalinks = require('metalsmith-permalinks');
 var ignore = require('metalsmith-ignore');
-var concat = require('metalsmith-concat');
 var uglify = require('metalsmith-uglify');
-var branch = require('metalsmith-branch');
-var prefixer = require('metalsmith-autoprefixer');
+// var branch = require('metalsmith-branch');
 var handlebars = require('handlebars');
 var collections = require('metalsmith-collections');
 var moment = require('moment');
+var browserify = require('browserify');
 var site_title = "quercy.co";
 var fs = require("fs");
 var description = "";
+
+var my_plugin = function (options) {
+    return function (files, metalsmith, done) {
+        // console.log(metalsmith._metadata.posts[0].path);
+        done();      
+    };
+};
 
 handlebars.registerHelper('date', function(date) {
   date = handlebars.escapeExpression(date);
@@ -24,22 +30,37 @@ handlebars.registerHelper('date', function(date) {
   );
 });
 
+handlebars.registerHelper('chopString', function(passedString, start) {
+    var theString = passedString.substring(start, passedString.length);
+    return new handlebars.SafeString(theString)
+});
+
 var ms = Metalsmith(__dirname)
     .source('src')
     .metadata({
         "site_title" : site_title,
         "description": ""
     })
+
     .use(sass({
         "outputStyle": "expanded",
         "outputDir" : "css/"
     }))
     .use(collections({
         posts : {
-            "pattern": "posts/*.html",
+            "pattern": "posts/**/*",
             "sortBy": 'date',
             "reverse": true
         }
+        // },
+        // pages : {
+        //     "pattern" : "*.html",
+        //     "name" : ""
+        // }
+    }))
+    .use(permalinks({
+        pattern: "./:collection/:title",
+        relative:false
     }))
     .use(layouts({
         "engine" : "handlebars",
@@ -47,15 +68,14 @@ var ms = Metalsmith(__dirname)
         "partials" : "layouts/partials",
         "pattern" : "**/*.html"
     }))
-    .use(concat({
-        "files": "js/*.js",
-        "output" : "js/app.js"
-    }))
-    .use(uglify())
-    .use(permalinks({
-        pattern: "./:collection/:title"
-    }))
-    .ignore(['layouts', '.DS_Store'])
+    // .use(concat({
+    //     "files": "js/*.js",
+    //     "output" : "js/app.js"
+    // }))
+    // .use(uglify())
+
+        .use(my_plugin())
+    .ignore(['layouts', '.DS_Store', 'site.js', '*.js'])
     .destination('./build');
 
 if (argv.watch) {
