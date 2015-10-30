@@ -1,9 +1,11 @@
-var $ = require('jquery');
-$.fn.extend({
-	velocity : require('velocity-animate')
-});
-var Cookies = require('js-cookie');
-
+// var $ = require('jquery');
+// $.fn.extend({
+// 	velocity : require('velocity-animate')
+// });
+// var Cookies = require('js-cookie');
+if (typeof(window.hljs) !== 'undefined') {
+	hljs.initHighlightingOnLoad();
+}
 $(document).ready(function() {
 	
 	var header = $('header');

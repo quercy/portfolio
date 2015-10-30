@@ -3,9 +3,8 @@ all: build
 ./node_modules:
 	npm install
 
-build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/* ./layouts/*/* Makefile
+build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/**/* Makefile ./src/js/jquery.js ./src/js/velocity.js ./src/js/js-cookie.js
 	node build.js
-	mkdir build/js && browserify ./src/js/*.js > ./build/js/bundle.js
 
 
 watch: ./node_modules
@@ -19,3 +18,12 @@ deploy: build
 
 clean:
 	rm -r ./build
+
+./src/js/jquery.js: ./node_modules
+	cp ./node_modules/jquery/dist/jquery.js ./src/js/jquery.js
+
+./src/js/velocity.js: ./node_modules
+	cp ./node_modules/velocity-animate/velocity.js ./src/js/velocity.js
+
+./src/js/js-cookie.js: ./node_modules
+	cp ./node_modules/js-cookie/src/js.cookie.js ./src/js/js-cookie.js

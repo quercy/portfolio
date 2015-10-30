@@ -1,5 +1,6 @@
 	</body>
-<script src="/js/bundle.js" type="text/javascript" defer> </script>
+<script src="/js/app.min.js" type="text/javascript" defer> </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
 {{#dev}}
 	<script src="http://localhost:35729/livereload.js"></script>
 {{/dev}}

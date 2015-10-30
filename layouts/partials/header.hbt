@@ -3,6 +3,7 @@
 	<head>
 		<link href="/css/site.css" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_dark.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{#dev}} !!development!! {{/dev}} {{ title }} -- {{ site_title }} </title>
 		<meta name="description" content="{{ description }}">

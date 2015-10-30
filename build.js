@@ -6,21 +6,15 @@ var watch = require('metalsmith-watch');
 var permalinks = require('metalsmith-permalinks');
 var ignore = require('metalsmith-ignore');
 var uglify = require('metalsmith-uglify');
-// var branch = require('metalsmith-branch');
+var branch = require('metalsmith-branch');
 var handlebars = require('handlebars');
 var collections = require('metalsmith-collections');
 var moment = require('moment');
+var concat = require('metalsmith-concat');
 var browserify = require('browserify');
 var site_title = "quercy.co";
 var fs = require("fs");
 var description = "";
-
-var my_plugin = function (options) {
-    return function (files, metalsmith, done) {
-        // console.log(metalsmith._metadata.posts[0].path);
-        done();      
-    };
-};
 
 handlebars.registerHelper('date', function(date) {
   date = handlebars.escapeExpression(date);
@@ -52,11 +46,6 @@ var ms = Metalsmith(__dirname)
             "sortBy": 'date',
             "reverse": true
         }
-        // },
-        // pages : {
-        //     "pattern" : "*.html",
-        //     "name" : ""
-        // }
     }))
     .use(permalinks({
         pattern: "./:collection/:title",
@@ -68,14 +57,12 @@ var ms = Metalsmith(__dirname)
         "partials" : "layouts/partials",
         "pattern" : "**/*.html"
     }))
-    // .use(concat({
-    //     "files": "js/*.js",
-    //     "output" : "js/app.js"
-    // }))
-    // .use(uglify())
-
-        .use(my_plugin())
-    .ignore(['layouts', '.DS_Store', 'site.js', '*.js'])
+    .use(concat({
+        "files": ["js/jquery.js", "js/velocity.js", "js/js-cookie.js", "js/site.js"],
+        "output" : "js/app.js"
+    }))
+    .use(uglify())
+    .ignore(['layouts', '.DS_Store'])
     .destination('./build');
 
 if (argv.watch) {
