@@ -102,7 +102,9 @@ $(document).ready(function() {
 		} else {
 			header_reid.velocity({'opacity':1}, {'duration':0});
 			header_savage.velocity({'opacity':1}, {'duration':0});
-			headerHover();
+			setTimeout(function() {
+				headerHover();
+			}, 1000);
 		}
 	})(Cookies.get("animationRun") === "true");
 });

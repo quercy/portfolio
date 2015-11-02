@@ -2,15 +2,27 @@
 {{> header}}
 	<div id="content" class="blog">
 	{{{ contents }}}
+	{{#dev}}
+		{{#each collections.posts}}
+			<div class="item">
+	            <h4><a href="{{{chopString this.path 1}}}">{{this.title}}</a></h4>
+	            {{{date this.date}}}
+	            <article>{{this.tagline}}</article>
+	        </div>
+
+		{{/each}}
+	{{/dev}}
 
 	{{#each collections.posts}}
-		<div class="item">
-            <h4><a href="{{{chopString this.path 1}}}">{{this.title}}</a></h4>
-            {{{date this.date}}}
-            <article>{{this.tagline}}</article>
-        </div>
+		{{#this.active}}
+			<div class="item">
+	            <h4><a href="{{{chopString this.path 1}}}">{{this.title}}</a></h4>
+	            {{{date this.date}}}
+	            <article>{{this.tagline}}</article>
+	        </div>
+        {{/this.active}}
+
 	{{/each}}
 	</div>
 
 {{> footer}}
-

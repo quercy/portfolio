@@ -6,7 +6,6 @@ all: build
 build: ./node_modules ./src/* ./src/**/* ./build.js ./layouts/**/* Makefile ./src/js/jquery.js ./src/js/velocity.js ./src/js/js-cookie.js
 	node build.js
 
-
 watch: ./node_modules
 	node build.js --watch
 

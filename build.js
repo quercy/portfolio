@@ -24,6 +24,21 @@ handlebars.registerHelper('date', function(date) {
   );
 });
 
+handlebars.registerHelper('log', function(msg) {
+    var fmtd = "";
+    if(typeof(msg) === "object") {
+        fmtd += " { \n";
+        for(prop in msg) {
+            fmtd += "\t" + prop + " : " + (typeof(msg[prop]) === "string" ? "\"" + msg[prop] + "\"" : msg[prop]) + "\n";
+        }
+        fmtd += " } \n";
+    } else {
+        fmtd = msg;
+    }
+    
+    console.log(fmtd);
+});
+
 handlebars.registerHelper('chopString', function(passedString, start) {
     var theString = passedString.substring(start, passedString.length);
     return new handlebars.SafeString(theString)
@@ -77,6 +92,12 @@ if (argv.watch) {
 if(argv.dev) {
     ms.metadata({
         "dev" : true,
+        "site_title" : site_title,
+        "description" : description
+    });
+} else {
+        ms.metadata({
+        "dev" : false,
         "site_title" : site_title,
         "description" : description
     });

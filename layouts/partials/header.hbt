@@ -15,8 +15,8 @@
 	<body>
 <header>
 	<div id="header_text">
-		<span id="header_reid"><a href="/index">reid</a><div class='mask'></div></span>
-		<span id="header_savage"><a href="/index">savage</a><div class='mask'></div></span>
+		<span id="header_reid"><a href="/">reid</a><div class='mask'></div></span>
+		<span id="header_savage"><a href="/">savage</a><div class='mask'></div></span>
 	</div>
 	<div id="header_links">
 		<ul>
