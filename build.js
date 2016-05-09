@@ -15,6 +15,7 @@ var browserify = require('browserify');
 var site_title = "quercy.co";
 var fs = require("fs");
 var description = "";
+var serve = require("metalsmith-serve");
 
 handlebars.registerHelper('date', function(date) {
   date = handlebars.escapeExpression(date);
@@ -94,7 +95,8 @@ if(argv.dev) {
         "dev" : true,
         "site_title" : site_title,
         "description" : description
-    });
+    })
+    .use(serve());
 } else {
         ms.metadata({
         "dev" : false,

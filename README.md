@@ -18,4 +18,4 @@ Will run continuously - whenever the SASS files, templates, or layouts are modif
 
     make dev
     
-Same as make watch, except a live reload script is included (when any files are modified, the site will automatically reload in your browser).
+Same as make watch, except an HTTP server (port 8080) and live reload script is included (when any files are modified, the site will automatically reload in your browser).

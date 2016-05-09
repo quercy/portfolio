@@ -8,7 +8,7 @@ header {
 		font-size:40px;
 		padding-top:75px;
 		margin-left:auto;
-		padding-left:65px; // makes it look more centered, oddly enough
+		padding-left:28px; // makes it look more centered, oddly enough
 		margin-right:auto;
 		width:200px;
 		overflow:visible;
@@ -67,7 +67,7 @@ header {
 			display:inline;
 			font-weight:200;
 			font-size:15px;
-			margin: 18px;
+			margin-right: 20px;
 
 			a {
 				color:$link-color;
