@@ -51,7 +51,6 @@ var ms = Metalsmith(__dirname)
         "site_title" : site_title,
         "description": ""
     })
-
     .use(sass({
         "outputStyle": "expanded",
         "outputDir" : "css/"
@@ -65,7 +64,7 @@ var ms = Metalsmith(__dirname)
     }))
     .use(permalinks({
         pattern: "./:collection/:title",
-        relative:false
+        relative: false
     }))
     .use(layouts({
         "engine" : "handlebars",
@@ -97,8 +96,9 @@ if(argv.dev) {
         "description" : description
     })
     .use(serve());
-} else {
-        ms.metadata({
+} 
+else {
+    ms.metadata({
         "dev" : false,
         "site_title" : site_title,
         "description" : description

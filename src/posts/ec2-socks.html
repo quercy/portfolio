@@ -1,0 +1,44 @@
+---
+title: "Using the AWS CLI to create an on-the-fly SOCKS tunnel"
+layout: post.hbt
+blog: true
+tagline: ""
+active: true
+date: 2015-10-25
+---
+
+<div>
+<p>I don't like using unsecured Wifi - unfortunately, sometimes it's a requirement, so I made a one-liner that creates a socks tunnel into an EC2 instance I have running, and leave it at that.  
+<code>
+    sudo ssh -v -D1021 -p 22 -N ec2-user@$1 -i ~/.ssh/private_key.pem
+</code>
+</p>
+<p>Unfortunately, this also means that I have to have an instance running 24/7 to connect to. So, why not <a href="https://github.com/quercy/ec2-socks-launcher/blob/master/esl.sh" target="_blank">launch an instance on the fly?</a></p>
+
+<h4>Launch the instance and get its ID</h4>
+<p><code class="bash">ID=$(aws ec2 <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank">run-instances</a> --image-id ami-08111162 --instance-type t2.nano --count 1 --key-name keyname --security-group-ids xxxx --subnet-id xxxx --output text --query 'Instances[*].InstanceId')</code>
+I've already defined a few variables. The AMI ID in this case is Amazon Linux, and the security groups / subnet IDs correspond to those that I've already created (just open port 22 in this case). The query, at the end, parses through the data we get back from AWS to grab the instance ID and uses it to...
+</p>
+<p>
+    <code>aws ec2 <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/wait/index.html" target="_blank">wait</a> <a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/wait/instance-running.html" target="_blank">instance-running</a> --instance-ids $ID</code>
+    Wait until the instance is running. This blocks the script until we're sure it has a public IP. Once it's running,
+</p>
+<h4>Get the IP</h4>
+<p>
+    <code>IP=$(aws ec2 describe-instances --instance-ids $ID --output text --query 'Reservations[*].Instances[*].PublicIpAddress')</code>
+    This passes the instance ID to the ec2 command describe-instances and filters through the response for the public IP.
+</p>
+<h4>Wait until status checks pass and open the tunnel</h4>
+<p>
+    <code>
+    aws ec2 wait instance-status-ok --instance-ids $ID && 
+    echo "Instance is ready. Opening SSH tunnel." && 
+    ssh -D $SOCKS_PORT -p 22 -N $EC2_USER@$IP -i $SSH_KEY
+    </code>
+    The quick and dirty: wait again until the instance status is OK, then open the tunnel. <b>Caveat</b>: the OK status can take a while to reach, and the instance can be ready for the tunnel much before this; but without making any assumptions and repeatedly trying to connect to the instance (and possibly being blocked by a firewall), this is the most reliable way.
+    </p>
+    <h2>
+    Conclusion
+    </h2>
+    <p>Complete script can be seen on Github <a href="https://github.com/quercy/ec2-socks-launcher/blob/master/esl.sh" target="_blank">here</a>. This script still leaves the problem of DNS unsolved, and isn't perfect; for example, if the user waits too long to confirm the fingerprint of the server, it will end the connection without notification, and the script exits without terminating the instance. It is, however, good enough for my purposes (checking Facebook on an unsecured cafe network - very important).</p>
+</div>

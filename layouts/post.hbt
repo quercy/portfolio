@@ -3,4 +3,5 @@
 		<h1 class="">{{ title }}</h1>
 		{{{ contents }}}
 	</div>
+		<footer></footer>
 {{> footer}}
